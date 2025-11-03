@@ -10,6 +10,44 @@ import {
 
 export const Route = createFileRoute('/')({
   component: App,
+  head: () => ({
+    meta: [
+      {
+        name: 'robots',
+        content:
+          'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1', // atau sesuai kebutuhan Anda
+      },
+      {
+        title: import.meta.env.VITE_APP_TITLE,
+      },
+      {
+        name: 'title',
+        content: import.meta.env.VITE_APP_TITLE,
+      },
+      {
+        property: 'og:url',
+        content: 'https://domain.com/path',
+      },
+      {
+        property: 'og:title',
+        content: import.meta.env.VITE_APP_TITLE,
+      },
+      {
+        name: 'twitter:url',
+        content: 'https://domain.com/path',
+      },
+      {
+        name: 'twitter:title',
+        content: import.meta.env.VITE_APP_TITLE,
+      },
+    ],
+    links: [
+      {
+        rel: 'canonical',
+        href: 'https://domain.com/path',
+      },
+    ],
+  }),
 })
 
 function App() {
