@@ -3,6 +3,9 @@ import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
 import viteTsConfigPaths from 'vite-tsconfig-paths'
 import tailwindcss from '@tailwindcss/vite'
+import { nitroV2Plugin } from '@tanstack/nitro-v2-vite-plugin'
+
+const isVercel = process.env.VERCEL === '1'
 
 const config = defineConfig({
   plugins: [
@@ -12,6 +15,13 @@ const config = defineConfig({
     }),
     tailwindcss(),
     tanstackStart(),
+    nitroV2Plugin({
+      preset: isVercel ? 'vercel-edge' : 'node-server',
+      serveStatic: true,
+      minify: true,
+      compatibilityDate: '2025-11-02',
+      debug: true,
+    }),
     viteReact(),
   ],
 })
