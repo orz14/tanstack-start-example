@@ -13,6 +13,7 @@ import TanStackQueryDevtools from "../integrations/tanstack-query/devtools"
 import appCss from "../styles.css?url"
 
 import type { QueryClient } from "@tanstack/react-query"
+import { APP_URL } from "@/constants/url"
 
 interface MyRouterContext {
   queryClient: QueryClient
@@ -59,7 +60,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       },
       {
         property: "og:site_name",
-        content: import.meta.env.VITE_APP_TITLE,
+        content: import.meta.env.VITE_APP_TITLE || "TanStack Start Starter",
       },
       {
         property: "og:locale",
@@ -83,10 +84,6 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
           "Aeiwi, Alexa, AllTheWeb, AltaVista, AOL Netfind, Anzwers, Canada, DirectHit, EuroSeek, Excite, Overture, Go, Google, HotBot, InfoMak, Kanoodle, Lycos, MasterSite, National Directory, Northern Light, SearchIt, SimpleSearch, WebsMostLinked, WebTop, What-U-Seek, AOL, Yahoo, WebCrawler, Infoseek, Excite, Magellan, LookSmart, CNET, Googlebot",
       },
       {
-        name: "description",
-        content: import.meta.env.VITE_APP_DESCRIPTION,
-      },
-      {
         name: "keywords",
         content:
           "tanstack, tanstack start, tanstack start starter, tanstack router, tanstack query, react, solid, ai, artificial intelligence, next generation ai applications, full-stack framework, server functions, streaming, type safety",
@@ -94,15 +91,6 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       {
         property: "og:type",
         content: "website",
-      },
-      {
-        property: "og:description",
-        content: import.meta.env.VITE_APP_DESCRIPTION,
-      },
-      {
-        property: "og:image",
-        content:
-          "https://cdn.jsdelivr.net/gh/orz14/orzcode@main/aisystem-landing/assets/logos/aisystem-landing-1200x630.png",
       },
       {
         property: "og:image:width",
@@ -135,16 +123,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       },
       {
         name: "twitter:domain",
-        content: "domain.com",
-      },
-      {
-        name: "twitter:description",
-        content: import.meta.env.VITE_APP_DESCRIPTION,
-      },
-      {
-        name: "twitter:image",
-        content:
-          "https://cdn.jsdelivr.net/gh/orz14/orzcode@main/aisystem-landing/assets/logos/aisystem-landing-1200x630.png",
+        content: APP_URL?.replace(/^(http|https):\/\//, ""),
       },
       {
         name: "mobile-web-app-capable",
@@ -156,7 +135,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       },
       {
         name: "apple-mobile-web-app-title",
-        content: import.meta.env.VITE_APP_TITLE,
+        content: import.meta.env.VITE_APP_TITLE || "TanStack Start Starter",
       },
       {
         name: "theme-color",
@@ -228,7 +207,6 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       },
     ],
   }),
-
   shellComponent: RootDocument,
 })
 
